@@ -1,0 +1,374 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.app-color {
+  background-color: #00A9D5 !important;
+}
+
+.app-padding {
+  padding: 10px
+}
+
+.app-padding-bottom {
+  padding-bottom: 10px
+}
+
+.not-padding-bottom {
+  padding: 10px;
+  padding-bottom: 0px;
+}
+
+.app-padding-title {
+  padding-bottom: 5px;
+}
+
+.app-textColor {
+  color: white;
+  font-size: 16px !important;
+}
+
+.app-table-categories {
+  background-color: #34464D !important;
+}
+
+.app-table-subproductos {
+  background-color: #9C9C9C !important;
+}
+
+.app-table-body {
+  background-color: white !important;
+}
+
+.app-table-categories-body {
+  background-color: #DEDEDE !important;
+  padding: 15px !important;
+  color: #000;
+}
+.app-table-products-body {
+  background-color: #E9EDEE !important;
+  padding: 15px !important;
+  color: #000;
+}
+input[type="checkbox"]:checked {
+  accent-color: #0099C1 !important;
+}
+
+input[type="checkbox"] {
+  width: 15px !important;
+  height: 15px !important;
+  border: 1px solid #757575 !important;
+}
+
+::placeholder {
+  color: #cccccc !important;
+}
+
+.app-td {
+  padding: 15px !important;
+}
+
+.bg-app {
+  background-color: #00A9D5 !important;
+  border-color: #00A9D5 !important;
+}
+
+.search-input {
+  margin-left: 10px;
+  width: 200px;
+}
+
+.search-product-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+select {
+  width: 100%;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-height: 100%;
+}
+.products-container {
+  max-height: 100%;
+}
+table {
+  width: 100%;
+  min-width: 600px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 1px;
+  border-bottom: 1px solid #ddd;
+  /* Línea divisoria entre filas */
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: transparent;
+  /* Resalta la fila al pasar el mouse */
+}
+
+/* Estilos para evitar que los divs de categorías y subproductos se expandan demasiado */
+td>div,
+td>ul {
+  max-height: 100vh;
+  max-width: 100vh !important;
+  overflow-y: hidden;
+  /* Oculta el scroll vertical */
+}
+
+.scrollable-tbody {
+  overflow-y: auto;
+  max-height: 80vh;
+  padding: 10px;
+  background-color: #ECECEC;
+}
+
+.scrollable-tbody::-webkit-scrollbar {
+  display: none;
+  /* Para WebKit browsers como Chrome y Safari */
+}
+
+.blue-table thead {
+  background-color: lightblue !important;
+  color: black !important;
+}
+
+.black-table thead {
+  background-color: black !important;
+  color: white !important;
+}
+
+.grey-table thead {
+  background-color: grey !important;
+  color: white !important;
+}
+
+.add-product-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-product-btn:hover {
+  background-color: #0056b3;
+}
+
+.add-sub-btn {
+  background-color: #DEDEDC;
+  color: #000000;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s, transform 0.1s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  font-weight: 400;
+}
+
+.add-sub-btn:hover {
+  background-color: #c8cccf;
+}
+
+.add-sub-btn:active {
+  transform: translateY(-1px);
+}
+
+.center-content {
+  text-align: center;
+  font-size: 20px !important;
+}
+
+.centered-container {
+  display: flex;
+  /* Activa Flexbox */
+  justify-content: center;
+  /* Centra horizontalmente */
+  align-items: center;
+  /* Centra verticalmente */
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  transition: transform 0.3s ease;
+  margin-left: auto;
+}
+
+.toggle-button-left {
+  margin-left: 10px;
+}
+
+.toggle-button.expanded {
+  transform: rotate(90deg);
+}
+
+.discreet-right {
+  float: right;
+  margin-right: 10px;
+}
+
+.discreet-button:hover {
+  background-color: #f0f0f0;
+  color: #000;
+  /* Opcional: Puedes hacer que la sombra sea más prominente al pasar el mouse */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.discreet-button:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.close {
+  float: right;
+  font-size: 1.5rem;
+}
+
+.tabla-marco {
+  border: 1px solid #00A9D5;
+  background-color: #FDFDFD;
+  padding: 5px;
+}
+
+.tabla-titulo {
+  color: #00A9D5;
+  font-weight: bold;
+  text-align: left;
+}
+
+.boton-gris {
+  background-color: #DEDEDE;
+  border: 1px solid #DEDEDE;
+  color: #333;
+  padding: 5px 10px;
+  margin-right: 5px;
+  float: right;
+}
+
+.tabla-cuerpo {
+  padding: 5px;
+  list-style: none;
+}
+
+.fila-lista {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid #DEDEDE;
+}
+
+.check {
+  margin-right: 10px;
+}
+
+.spinner-container {
+  display: flex;
+  /* Enable flexbox for centering */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+}
+
+.spinner-container {
+  position: fixed;
+  top: 0;
+  /* Center vertically */
+  left: 0;
+  /* Center horizontally */
+  right: 0;
+  bottom: 0;
+  background-color: 'rgba(0, 0, 0, 0.7)';
+  display: 'flex';
+  align-items: 'flex-start';
+  justify-content: 'center';
+  padding-top: '10vh';
+}
+
+.large-spinner {
+  font-size: 3em;
+  /* Increase icon size (adjust as needed) */
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
