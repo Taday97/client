@@ -1,6 +1,7 @@
 import '../App.css';
 import { Link } from "react-router-dom"
 import React, { useEffect, useState } from "react"
+import axios from 'axios';
 
 function App() {
   const [selectData, setSelectData] = useState([])
@@ -8,14 +9,16 @@ function App() {
 
   //fetch selected data
   useEffect(() => {
-    const showData = async () => {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/selectdata`);
-      const data = await response.json();
-      console.log(data);
-      setSelectData(data);
-    };
-    showData();
+    axios.get(`${process.env.REACT_APP_API_URL}/selectdata`)
+      .then(response => {
+        setSelectData(response.data);
+      })
+      .catch(error => {
+        //show error message here
+        console.error("There was an error fetching the selectdata: ", error);
+      });
   }, []);
+  
 
   //search data by any name of the displayed data set
   const searcher = (e) => {
@@ -39,7 +42,7 @@ function App() {
     )
   )
 
-  
+
   return (
     <div className="container mt-2">
       <div className="col-md-12">

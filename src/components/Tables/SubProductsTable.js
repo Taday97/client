@@ -8,7 +8,7 @@ const SubProductsTable = ({ SubCategorieId }) => {
 
     //selectedSubProducts contains the data selected
     //toggleSubProduct hook to save the selected sub-products or delete it in case of deselectionand 
-    const { selectedSubProducts, toggleSubProduct } = useSelection();
+    const { selectedSubProducts, toggleSubProduct, toggleModalAdd } = useSelection();
     //values obtained in the data fetch
     const [subProducts, setSubProducts] = useState([]);
     //state to control when or not to expand the table data 
@@ -98,7 +98,7 @@ const SubProductsTable = ({ SubCategorieId }) => {
 
                         </div>
                         <div className="centered-container not-padding-bottom app-table-subproductos">
-                            <button className="add-sub-btn">
+                            <button className="add-sub-btn" onClick={() => toggleModalAdd(SubCategorieId)}>
                                 <FontAwesomeIcon icon={faPlus} /> ADD SUB-PRODUCT
                             </button>
                         </div>

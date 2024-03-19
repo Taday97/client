@@ -13,6 +13,11 @@ export const SelectionProvider = ({ children }) => {
     const [selectedSubProducts, setSelectedSubProducts] = useState(new Map());
     //state to control the visibility of Modal that the selected data will have
     const [isModalOpen, setIsModalOpen] = useState(false);
+    //state to control the visibility of ModalAdd 
+    const [isModalAddOpen, setIsModalAddOpen] = useState(false);
+    
+    //state to control add Sub-Product 
+    const [bodyAddSubProduct, setBodyAddSubProduct] = useState({});
 
     //hook to determine if there is a new product selected, add it to the selection or otherwise delete it
     const toggleProduct = (product) => {
@@ -56,12 +61,12 @@ export const SelectionProvider = ({ children }) => {
         });
     };
     // function to remove subcategories
-    const removeRelatedSubcategoriesAndSubproducts = (productId) => { 
+    const removeRelatedSubcategoriesAndSubproducts = (productId) => {
         const relatedSubcategories = [...selectedSubcategories.values()].filter(subcategory => subcategory.productId === productId);
-        console.log("relatedSubcategories "+ relatedSubcategories)
+        console.log("relatedSubcategories " + relatedSubcategories)
         relatedSubcategories.forEach(subcategory => {
-            selectedSubcategories.delete(subcategory.id); 
-            removeRelatedSubproducts(subcategory.id); 
+            selectedSubcategories.delete(subcategory.id);
+            removeRelatedSubproducts(subcategory.id);
         });
     };
 
@@ -69,14 +74,22 @@ export const SelectionProvider = ({ children }) => {
     const removeRelatedSubproducts = (subcategoryId) => {
         const relatedSubProducts = [...selectedSubProducts.values()].filter(subproduct => subproduct.subCategoryId === subcategoryId);
         relatedSubProducts.forEach(subproduct => {
-            selectedSubProducts.delete(subproduct.id); 
+            selectedSubProducts.delete(subproduct.id);
         });
     };
 
     //to determine whether the modal should be shown or not
     const toggleModal = () => {
-        console.log("sdfsfd");
         setIsModalOpen(!isModalOpen);
+    };
+
+    //to determine whether the modal should be shown or not
+    const toggleModalAdd = (SubCategorieId) => {
+        setIsModalAddOpen(!isModalAddOpen);
+        if(!isModalAddOpen){
+            setBodyAddSubProduct({subCategorieId:SubCategorieId});
+        }
+
     };
 
     return (
@@ -86,6 +99,8 @@ export const SelectionProvider = ({ children }) => {
             selectedSubcategories, toggleSubcategory,
             selectedSubProducts, toggleSubProduct,
             isModalOpen, toggleModal,
+            isModalAddOpen, toggleModalAdd,
+            bodyAddSubProduct
         }}>
             {children}
         </SelectionContext.Provider>

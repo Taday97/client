@@ -35,9 +35,12 @@
 .app-padding {
   padding: 10px
 }
-
+.app-padding-button {
+  padding: 10px;
+  padding-bottom: 0px
+}
 .app-padding-bottom {
-  padding-bottom: 10px
+  padding-bottom: 5px
 }
 
 .not-padding-bottom {

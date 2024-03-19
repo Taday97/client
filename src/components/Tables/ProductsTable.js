@@ -35,6 +35,7 @@ const ProductsTable = () => {
                     </div>
                 </div>
             </div>
+            <div className='table-container'>
             <div className="app-padding app-color mt-2 products-container">
                 <div className="app-color" >
                     <div className="center-content app-color app-textColor app-padding-title">
@@ -69,12 +70,15 @@ const ProductsTable = () => {
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div className="centered-container app-padding-bottom app-color">
+                <div className="centered-container app-padding-button app-color">
                 <button className="add-sub-btn">
                     <FontAwesomeIcon icon={faPlus} /> ADD PRODUCT
                 </button>
             </div>
+            </div>
+            
+            </div>
+           
         </div>
     );
 };
