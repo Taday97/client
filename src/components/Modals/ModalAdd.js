@@ -66,7 +66,7 @@ const ModalAdd = () => {
         <div className="modal">
           <div>
             <div className="header-modal-add">
-            <div className="title"><FontAwesomeIcon icon={faPlus} /> ADD SUB-Produ</div>
+            <div className="title"><FontAwesomeIcon icon={faPlus} /> ADD SUB-PRODUCT</div>
             <button className="closeButton" onClick={() => {
               toggleModalAdd();
               setValidated(false); // Restablecer el estado validated a false
