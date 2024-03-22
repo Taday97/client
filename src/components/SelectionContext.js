@@ -15,9 +15,12 @@ export const SelectionProvider = ({ children }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     //state to control the visibility of ModalAdd 
     const [isModalAddOpen, setIsModalAddOpen] = useState(false);
-    
+
     //state to control add Sub-Product 
     const [bodyAddSubProduct, setBodyAddSubProduct] = useState({});
+
+    const [reloadId, setReloadId] = useState();
+    const [reloadValue, setReloadValue] = useState(true);
 
     //hook to determine if there is a new product selected, add it to the selection or otherwise delete it
     const toggleProduct = (product) => {
@@ -63,7 +66,7 @@ export const SelectionProvider = ({ children }) => {
     // function to remove subcategories
     const removeRelatedSubcategoriesAndSubproducts = (productId) => {
         const relatedSubcategories = [...selectedSubcategories.values()].filter(subcategory => subcategory.productId === productId);
-        console.log("relatedSubcategories " + relatedSubcategories)
+      
         relatedSubcategories.forEach(subcategory => {
             selectedSubcategories.delete(subcategory.id);
             removeRelatedSubproducts(subcategory.id);
@@ -77,17 +80,26 @@ export const SelectionProvider = ({ children }) => {
             selectedSubProducts.delete(subproduct.id);
         });
     };
-
+   
     //to determine whether the modal should be shown or not
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
 
+     // function to remove reloadDataSubCategories
+     const reload = (SubCategorieId) => {
+        setReloadId(SubCategorieId);
+        setReloadValue(!reloadValue);
+        
+    };
     //to determine whether the modal should be shown or not
     const toggleModalAdd = (SubCategorieId) => {
         setIsModalAddOpen(!isModalAddOpen);
-        if(!isModalAddOpen){
-            setBodyAddSubProduct({subCategorieId:SubCategorieId});
+
+        if (!isModalAddOpen) {
+            setBodyAddSubProduct({ subCategorieId: SubCategorieId });
+        }else{
+            reload(SubCategorieId);
         }
 
     };
@@ -100,7 +112,7 @@ export const SelectionProvider = ({ children }) => {
             selectedSubProducts, toggleSubProduct,
             isModalOpen, toggleModal,
             isModalAddOpen, toggleModalAdd,
-            bodyAddSubProduct
+            bodyAddSubProduct,reloadId,reloadValue
         }}>
             {children}
         </SelectionContext.Provider>

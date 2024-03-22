@@ -4,11 +4,11 @@ import { useSelection } from '../SelectionContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-const SubProductsTable = ({ SubCategorieId }) => {
+const SubProductsTable = ({SubCategorieId}) => {
 
     //selectedSubProducts contains the data selected
     //toggleSubProduct hook to save the selected sub-products or delete it in case of deselectionand 
-    const { selectedSubProducts, toggleSubProduct, toggleModalAdd } = useSelection();
+    const { selectedSubProducts, toggleSubProduct, toggleModalAdd, reloadId,reloadValue } = useSelection();
     //values obtained in the data fetch
     const [subProducts, setSubProducts] = useState([]);
     //state to control when or not to expand the table data 
@@ -19,6 +19,7 @@ const SubProductsTable = ({ SubCategorieId }) => {
     //fetch sub-products given subCategorieId using axios
     useEffect(() => {
         if (SubCategorieId) {
+            //console.log("sssssssssss "+SubCategorieId);
             axios.get(`${process.env.REACT_APP_API_URL}subcategorieId/${SubCategorieId}/subproducts`)
                 .then(response => {
                     setSubProducts(response.data);
@@ -30,6 +31,21 @@ const SubProductsTable = ({ SubCategorieId }) => {
             setSubProducts([]);
         }
     }, [SubCategorieId]);
+
+    //fetch subproducts when value of reloadValue and reloadId change and are equal reloadId=== SubCategorieId
+    //prevents values from being reloaded on all deployed subproducts
+    useEffect(() => {
+        if (reloadId === SubCategorieId) {
+            //console.log("Reload for : " + SubCategorieId);
+            axios.get(`${process.env.REACT_APP_API_URL}subcategorieId/${SubCategorieId}/subproducts`)
+                .then(response => {
+                    setSubProducts(response.data);
+                })
+                .catch(error => {
+                    console.error("Error fetching the subProducts:", error);
+                });
+        }
+    }, [SubCategorieId,reloadId, reloadValue]);
 
     //hook to toggle table display
     const toggleTableDisplay = () => {

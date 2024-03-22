@@ -27,6 +27,7 @@ const ModalAdd = () => {
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
+    event.preventDefault(); // Evita que la página se recargue al enviar el formulario
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
@@ -40,17 +41,17 @@ const ModalAdd = () => {
       axios.post(`${process.env.REACT_APP_API_URL}subproducts/create/`, body)
         .then(response => {
           //show messages here Success
-          //console.log(':', response.data);
+          console.log(':', response.data);
           setIsLoading(false);
-          toggleModalAdd();
+         toggleModalAdd(response.data.subCategory);
         })
         .catch(error => {
           //show messages here Errorc
-          //console.error('Error:', error);
+          console.error('Error:', error);
           setIsLoading(false);
         });
     }
-    setValidated(true);
+    //setValidated(true);
   };
 
   return (
