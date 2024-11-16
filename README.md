@@ -33,6 +33,6 @@ A view of the products, subcategories, and subproducts that have been selected b
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/Taday97
+   git clone https://github.com/Taday97/client.git
    npm install
    npm start 
